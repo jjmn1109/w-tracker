@@ -1,7 +1,6 @@
 body {
   font-family: monospace;
   font-size: 72px;
-  background-color: black;
   -webkit-app-region: drag;
   height:20px;
   margin: 0px;

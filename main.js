@@ -35,8 +35,9 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: true,
       enableRemoteModule: true,
-      contextIsolation: false
+      contextIsolation: false,
     },
+    transparent:true
   });
   win.webContents.openDevTools(); 
   win.setAlwaysOnTop(true, 'screen');
