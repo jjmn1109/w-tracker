@@ -1,16 +1,16 @@
 const { ipcRenderer } = window.require('electron');
+const fs = window.require('fs');
 
 window.onload = function () {
-  var hours = 00;
-  var minutes = 00;
-  var seconds = 00;
-  var tens = 00; 
+  var hours = 0;
+  var minutes = 0;
+  var seconds = 0;
+  var tens = 0; 
   var appendTens = document.getElementById("tens")
   var appendSeconds = document.getElementById("seconds")
   var appendMinutes = document.getElementById("minutes")
   var appendhours = document.getElementById("hours")
 
-  
   var workedSeconds = 0;
   var workedMinutes = 0;
   var workedHours = 0;
@@ -25,6 +25,34 @@ window.onload = function () {
   var clockDiv = document.getElementById("clock");
   var resetButton = document.getElementById("button-reset");
   var closeButton = document.getElementById("button-close");
+
+  fs.readFile('myfile.txt', 'utf8', function(err, data) {
+    if (err) throw err;
+    if (data)
+    {
+      var dataObject = data.split('\n');
+      var lastData = dataObject[dataObject.length-2];
+
+      if (getTodayDate() == lastData.split(":")[0]) {
+        workedHours = parseInt(lastData.split(":")[1])
+        workedMinutes = parseInt(lastData.split(":")[2])
+        workedSeconds = parseInt(lastData.split(":")[3])
+      }
+    }
+    reset();
+  });
+
+  function getTodayDate() {
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    let mm = today.getMonth() + 1; // Months start at 0!
+    let dd = today.getDate();
+
+    if (dd < 10) dd = '0' + dd;
+    if (mm < 10) mm = '0' + mm;
+
+    return formattedToday = mm + '/' + dd + '/' + yyyy;
+  }
 
   function clickBody() {
     if (isPause)
@@ -45,14 +73,14 @@ window.onload = function () {
 
   closeButton.onclick = function() {
     reset();
-    ipcRenderer.send('close',[workedHours, workedMinutes, workedSeconds])
+    ipcRenderer.send('close', [workedHours, workedMinutes, workedSeconds])
   }
   
   function reset() {
     clearInterval(interval);
-    workedSeconds += seconds;
-    workedMinutes += minutes;
-    workedHours += hours;
+    workedSeconds += parseInt(seconds);
+    workedMinutes += parseInt(minutes);
+    workedHours += parseInt(hours);
     tens = 0;
     seconds = 0;
     minutes = 0;
@@ -74,7 +102,7 @@ window.onload = function () {
     }
 
     if (workedSeconds <= 9){
-      workedSecondsElem.innerHTML = "0" + workedSeconds;
+      workedSecondsElem.innerHTML = "0" +  workedSeconds;
     } else {
       workedSecondsElem.innerHTML = workedSeconds;
     }
