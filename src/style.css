@@ -1,0 +1,48 @@
+body {
+  font-family: monospace;
+  font-size: 72px;
+  background-color: black;
+  -webkit-app-region: drag;
+  height:20px;
+  margin: 0px;
+}
+
+#seconds {
+  font-size:30px;
+}
+
+#tens {
+  font-size:30px;
+}
+
+#today-work {
+  font-size:10px;
+  color:white;
+  text-align: center;
+}
+
+#clock {
+  text-align: center;
+}
+
+#button-close {
+  float: right;
+  margin-right: 10px;
+  height: 10px;
+}
+
+#button-reset {
+  float: right;
+  margin-right: 10px;
+  height: 10px;
+}
+
+.wrapper {
+  color: red;
+  position:absolute;
+  top:20px;
+  right:0px;
+  bottom:0px;
+  left:0px;
+  margin: 0px;
+}
