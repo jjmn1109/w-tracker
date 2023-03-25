@@ -57,19 +57,20 @@ window.onload = function () {
   function clickBody() {
     if (isPause)
     {
-      clockDiv.style.color = 'blue';
+      clockDiv.style.color = '#00e7ff';
       clearInterval(interval);
       interval = setInterval(startTimer, 10);
       isPause = false;
     }
     else{
-      clockDiv.style.color = 'red';
+      clockDiv.style.color = '#e74689';
       clearInterval(interval);
       isPause = true;
     }
   }
 
   wrapper.onclick = clickBody;
+  wrapper.ondblclick = reset;
 
   closeButton.onclick = function() {
     reset();
@@ -120,10 +121,6 @@ window.onload = function () {
     }
 
     isPause = false;
-  }
-
-  resetButton.onclick = function() {
-    reset()
   }
 
   function startTimer () {

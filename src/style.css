@@ -2,7 +2,7 @@ body {
   font-family: monospace;
   font-size: 72px;
   -webkit-app-region: drag;
-  height:20px;
+  height:10px;
   margin: 0px;
 }
 
@@ -22,26 +22,23 @@ body {
 
 #clock {
   text-align: center;
+  padding-left: 12px;
 }
 
 #button-close {
   float: right;
-  margin-right: 10px;
-  height: 10px;
-}
-
-#button-reset {
-  float: right;
-  margin-right: 10px;
-  height: 10px;
+  margin-right: 3px;
+  height: 15px;
 }
 
 .wrapper {
-  color: red;
-  position:absolute;
+  color: #e74689;
+  padding: 13px;
   top:20px;
   right:0px;
   bottom:0px;
   left:0px;
   margin: 0px;
+  border-radius: 15px;
+  background: rgba(22, 19, 19, 0.61);
 }

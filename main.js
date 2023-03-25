@@ -29,7 +29,7 @@ app.whenReady().then(createWindow);
 function createWindow() {
   const win = new BrowserWindow({
     width: 288,
-    height: 115,
+    height: 120,
     resizable: true,
     frame: false,
     webPreferences: {
@@ -39,7 +39,6 @@ function createWindow() {
     },
     transparent:true
   });
-  win.webContents.openDevTools(); 
   win.setAlwaysOnTop(true, 'screen');
   win.loadFile("src/index.html");
 }
