@@ -120,7 +120,8 @@ window.onload = function () {
       workedHoursElem.innerHTML = workedHours;
     }
 
-    isPause = false;
+    clockDiv.style.color = '#e74689';
+    isPause = true;
   }
 
   function startTimer () {
