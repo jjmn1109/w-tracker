@@ -28,8 +28,8 @@ app.whenReady().then(createWindow);
 
 function createWindow() {
   const win = new BrowserWindow({
-    width: 288,
-    height: 120,
+    width: 300,
+    height: 130,
     resizable: true,
     frame: false,
     webPreferences: {
