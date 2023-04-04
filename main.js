@@ -2,10 +2,11 @@ const { app, BrowserWindow } = require("electron");
 const {ipcMain} = require('electron')
 
 ipcMain.on('close',(e, args)=> {
+  var fileName = 'WorkTrackSave.txt'
   const fs = require('fs');
   try {
     var result;
-    var data = fs.readFileSync('myfile.txt', {encoding: 'utf8', flag:'r'});
+    var data = fs.readFileSync(fileName, {encoding: 'utf8', flag:'r'});
     if (data)
     {
       var dataObject = data.split('\n');
@@ -13,10 +14,10 @@ ipcMain.on('close',(e, args)=> {
 
       if (getTodayDate() == lastData.split(":")[0]) {
         result = dataObject.splice(dataObject.length-2, 0).join('\n');;
-        fs.writeFileSync('myfile.txt', result, 'utf-8');
+        fs.writeFileSync(fileName, result, 'utf-8');
       }
     }
-    fs.appendFileSync('myfile.txt', getTodayDate() + ":" + String(args[0]) + ":" + String(args[1]) + ":" + String(args[2]) + "\n");
+    fs.appendFileSync(fileName, getTodayDate() + ":" + String(args[0]) + ":" + String(args[1]) + ":" + String(args[2]) + "\n");
   }
   catch(e) { 
     console.log(e) 

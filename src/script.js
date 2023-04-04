@@ -23,10 +23,10 @@ window.onload = function () {
 
   var wrapper = document.getElementsByClassName('wrapper')[0]
   var clockDiv = document.getElementById("clock");
-  var resetButton = document.getElementById("button-reset");
   var closeButton = document.getElementById("button-close");
+  var fileName = 'WorkTrackSave.txt'
 
-  fs.readFile('myfile.txt', 'utf8', function(err, data) {
+  fs.readFile(fileName, 'utf8', function(err, data) {
     if (err) throw err;
     if (data)
     {
